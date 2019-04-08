@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <style media="screen">
+            fieldset {
+                width: 150px;
+                height: 150px;
+                display: inline-block;
+                vertical-align: top;
+            }
+            div {
+                width: 733px;
+                height: 200px;
+                overflow: scroll;
+                border: 1px solid black;
+            }
+        </style>
+        <meta charset="utf-8">
+        <title>Ninja Gold</title>
+    </head>
+    <body>
+        <h1>Welcome to Ninja Gold!</h1>
+
+        <h2>Your Gold: {{session.total_gold}}</h2>
+
+        <fieldset>
+            <legend><h3>Farm</h3></legend>
+            <p>Earns 10-20 golds</p>
+            <form class="" action="/process_money" method="post">
+                <input type="hidden" name="location" value="farm">
+                <input type="submit" name="" value="Find Gold!">
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend><h3>Cave</h3></legend>
+            <p>Earns 5-10 golds</p>
+            <form class="" action="/process_money" method="post">
+                <input type="hidden" name="location" value="cave">
+                <input type="submit" name="" value="Find Gold!">
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend><h3>House</h3></legend>
+            <p>Earns 2-5 golds</p>
+            <form class="" action="/process_money" method="post">
+                <input type="hidden" name="location" value="house">
+                <input type="submit" name="" value="Find Gold!">
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend><h3>Casino</h3></legend>
+            <p>Earns/Takes 0-50 golds</p>
+            <form class="" action="/process_money" method="post">
+                <input type="hidden" name="location" value="casino">
+                <input type="submit" name="" value="Find Gold!">
+            </form>
+        </fieldset>
+        <br>
+        <h2>Activities</h2>
+        <div class="">
+            {% for activity in session.activities %}
+                <p style="color:{{activity.color}};">{{activity.message}}</p>
+            {% endfor %}
+        </div>
+        <a href="/reset"><button>Reset</button></a>
+    </body>
+</html>
